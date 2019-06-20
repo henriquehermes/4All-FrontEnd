@@ -6,6 +6,10 @@ export const Container = styled.div`
   background: white;
   border-radius: 5px;
   overflow: hidden;
+
+  @media (min-width: 1440px) {
+    margin-top: 20px;
+  }
 `;
 
 export const Header = styled.div`
