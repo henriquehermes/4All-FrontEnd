@@ -11,6 +11,18 @@ async function apiGet() {
   }
 }
 
+async function apiPost(payload) {
+  try {
+    const response = await ApiCall.post('/messages', payload);
+
+    console.log(response);
+
+    return response.data;
+  } catch (e) {
+    return e;
+  }
+}
+
 function* getMessages() {
   try {
     const response = yield call(apiGet);
@@ -24,6 +36,21 @@ function* getMessages() {
   }
 }
 
+function* postMessage({ message }) {
+  try {
+    const response = yield call(apiPost, message);
+    console.log('Teste', response, message);
+
+    yield put({
+      type: 'SUCCESS_MESSAGE',
+      message: response
+    });
+  } catch (err) {
+    yield put({ type: 'FAILURE_MESSAGE', errorMessage: err });
+  }
+}
+
 export default function* watcherMessages() {
-  yield takeLatest('REQUEST_MESSAGES', getMessages);
+  yield takeLatest('REQUEST_MESSAGES', getMessages),
+    yield takeLatest('POST_MESSAGE', postMessage);
 }

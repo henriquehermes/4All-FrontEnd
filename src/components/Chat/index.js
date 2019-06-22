@@ -20,10 +20,44 @@ import {
 } from './styles';
 
 export default class Chat extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userMessage: {
+        userName: 'Eu',
+        message: undefined,
+        time: '1 min ago'
+      }
+    };
+  }
+
+  handleText(event) {
+    let { userMessage } = this.state;
+
+    userMessage.message = event.target.value;
+    this.setState({
+      userMessage: userMessage
+    });
+  }
+
+  handlePost() {
+    let { userMessage } = this.state;
+    const { postMessage } = this.props;
+
+    postMessage(userMessage);
+    userMessage.message = undefined;
+
+    this.setState({
+      userMessage: userMessage
+    });
+  }
+
   render() {
     const { data } = this.props;
+    const { userMessage } = this.state;
     const LastPosition = data.length - 1;
-    console.log(data, LastPosition);
+
+    console.log(userMessage);
 
     return (
       <Row>
@@ -40,7 +74,10 @@ export default class Chat extends Component {
                   noBorder={index === LastPosition ? true : false}
                   displayPortraitLeft={item.displayPortraitLeft}
                 >
-                  <UserImage image={item.portrait} />
+                  <UserImage
+                    image={item.portrait}
+                    displayPortraitLeft={item.displayPortraitLeft}
+                  />
                   <MessageBox>
                     <TextBox>
                       <UserName>{item.userName}</UserName>
@@ -52,8 +89,14 @@ export default class Chat extends Component {
               ))}
             </Body>
             <Footer>
-              <InputMessage />
-              <ButtonSend>
+              <InputMessage
+                onChange={this.handleText.bind(this)}
+                value={userMessage.message}
+              />
+              <ButtonSend
+                onClick={() => this.handlePost()}
+                disabled={Boolean(!userMessage.message)}
+              >
                 <ButtonText>Send</ButtonText>
               </ButtonSend>
             </Footer>

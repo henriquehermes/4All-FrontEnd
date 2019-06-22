@@ -1,6 +1,35 @@
 const REQUEST_MESSAGES = 'REQUEST_MESSAGES';
 const SUCCESS_MESSAGES = 'SUCCESS_MESSAGES';
 const FAILURE_MESSAGES = 'FAILURE_MESSAGES';
+/** */
+const POST_MESSAGE = 'POST_MESSAGE';
+const SUCCESS_MESSAGE = 'SUCCESS_MESSAGE';
+const FAILURE_MESSAGE = 'FAILURE_MESSAGE';
+
+/** */
+
+export function postMessage(message) {
+  return {
+    type: POST_MESSAGE,
+    message: message
+  };
+}
+
+export function successMessage() {
+  return {
+    type: SUCCESS_MESSAGE,
+    payload
+  };
+}
+
+export function failureMessage() {
+  return {
+    type: FAILURE_MESSAGE,
+    errorMessage
+  };
+}
+
+/** */
 
 export function requestMessages() {
   return {
@@ -11,7 +40,7 @@ export function requestMessages() {
 export function successMessages() {
   return {
     type: SUCCESS_MESSAGES,
-    payloa
+    payload
   };
 }
 
@@ -24,8 +53,11 @@ export function failureMessages() {
 
 const initialState = {
   loadingMessages: false,
+  loadingMessage: false,
+  errorMessage: null,
   errorMessages: null,
-  payload: []
+  payload: [],
+  message: {}
 };
 
 export default function reducer(state = initialState, action) {
@@ -45,6 +77,24 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         loadingMessages: false,
         errorMessages: action.errorMessages
+      });
+
+    case POST_MESSAGE:
+      return Object.assign({}, state, {
+        message: action.message,
+        loadingMessage: true,
+        errorMessage: null
+      });
+    case SUCCESS_MESSAGE:
+      return Object.assign({}, state, {
+        message: action.message,
+        loadingMessage: false,
+        errorMessage: null
+      });
+    case FAILURE_MESSAGE:
+      return Object.assign({}, state, {
+        loadingMessage: false,
+        errorMessage: action.errorMessage
       });
 
     default:

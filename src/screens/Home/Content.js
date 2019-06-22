@@ -20,14 +20,17 @@ export default class Home extends Component {
   }
 
   render() {
-    const { widgets, pageViews, messages } = this.props;
+    const { widgets, pageViews, messages, postMessage } = this.props;
 
     return (
       <Container>
         <Title>Dashboard</Title>
         <Widgets data={widgets.payload} />
         <Chart data={pageViews.payload} />
-        <Chat data={messages.payload} />
+        <Chat
+          data={messages.payload}
+          postMessage={event => postMessage(event)}
+        />
       </Container>
     );
   }

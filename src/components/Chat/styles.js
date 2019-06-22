@@ -81,8 +81,8 @@ export const UserImage = styled.img.attrs(props => ({
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  margin-right: 15px;
-  margin-bottom: 15px;
+  margin: ${props =>
+    props.displayPortraitLeft ? '0px 0px 15px 15px' : '0px 15px 15px 0px'};
 `;
 
 export const MessageBox = styled.div`
