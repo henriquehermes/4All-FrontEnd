@@ -81,6 +81,14 @@ export default function reducer(state = initialState, action) {
 
     case POST_MESSAGE:
       return Object.assign({}, state, {
+        payload: [
+          ...state.payload,
+          {
+            userName: 'Eu',
+            time: '1 min ago',
+            message: action.message
+          }
+        ],
         message: action.message,
         loadingMessage: true,
         errorMessage: null

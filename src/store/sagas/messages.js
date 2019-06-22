@@ -15,8 +15,6 @@ async function apiPost(payload) {
   try {
     const response = await ApiCall.post('/messages', payload);
 
-    console.log(response);
-
     return response.data;
   } catch (e) {
     return e;
@@ -38,12 +36,11 @@ function* getMessages() {
 
 function* postMessage({ message }) {
   try {
-    const response = yield call(apiPost, message);
-    console.log('Teste', response, message);
+    yield call(apiPost, message);
 
     yield put({
       type: 'SUCCESS_MESSAGE',
-      message: response
+      message: message
     });
   } catch (err) {
     yield put({ type: 'FAILURE_MESSAGE', errorMessage: err });

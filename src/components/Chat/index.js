@@ -23,41 +23,32 @@ export default class Chat extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userMessage: {
-        userName: 'Eu',
-        message: undefined,
-        time: '1 min ago'
-      }
+      inputValue: ''
     };
   }
 
   handleText(event) {
-    let { userMessage } = this.state;
+    let { inputValue } = this.state;
 
-    userMessage.message = event.target.value;
+    inputValue = event.target.value;
     this.setState({
-      userMessage: userMessage
+      inputValue: inputValue
     });
   }
 
   handlePost() {
-    let { userMessage } = this.state;
+    let { inputValue } = this.state;
     const { postMessage } = this.props;
 
-    postMessage(userMessage);
-    userMessage.message = undefined;
+    postMessage(inputValue);
 
-    this.setState({
-      userMessage: userMessage
-    });
+    this.setState({ inputValue: '' });
   }
 
   render() {
     const { data } = this.props;
-    const { userMessage } = this.state;
+    const { inputValue } = this.state;
     const LastPosition = data.length - 1;
-
-    console.log(userMessage);
 
     return (
       <Row>
@@ -90,12 +81,13 @@ export default class Chat extends Component {
             </Body>
             <Footer>
               <InputMessage
+                ref={input => (this.textInput = input)}
                 onChange={this.handleText.bind(this)}
-                value={userMessage.message}
+                value={inputValue}
               />
               <ButtonSend
                 onClick={() => this.handlePost()}
-                disabled={Boolean(!userMessage.message)}
+                disabled={Boolean(!inputValue)}
               >
                 <ButtonText>Send</ButtonText>
               </ButtonSend>

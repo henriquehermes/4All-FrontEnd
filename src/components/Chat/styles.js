@@ -76,11 +76,12 @@ export const Cell = styled.div`
 `;
 
 export const UserImage = styled.img.attrs(props => ({
-  src: props.image
+  src: props.image ? props.image : null
 }))`
   width: 80px;
   height: 80px;
   border-radius: 50%;
+  background: ${props => (props.image ? 'transparent' : '#ff7f00')};
   margin: ${props =>
     props.displayPortraitLeft ? '0px 0px 15px 15px' : '0px 15px 15px 0px'};
 `;
