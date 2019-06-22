@@ -4,6 +4,7 @@ import { Title } from './styles';
 
 import Widgets from '../../components/Widgets';
 import Chart from '../../components/Chart';
+import Chat from '../../components/Chat';
 
 export default class Home extends Component {
   constructor(props) {
@@ -20,12 +21,13 @@ export default class Home extends Component {
 
   render() {
     const { widgets, pageViews, messages } = this.props;
-    // console.log(pageViews.payload);
+
     return (
       <Container>
         <Title>Dashboard</Title>
         <Widgets data={widgets.payload} />
         <Chart data={pageViews.payload} />
+        <Chat data={messages.payload} />
       </Container>
     );
   }

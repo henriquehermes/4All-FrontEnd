@@ -13,7 +13,7 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.div`
-  padding: 20px;
+  padding: 15px 20px 15px 20px;
   border-bottom-color: #eeeeee;
   border-bottom-style: solid;
   border-bottom-width: 2px;
