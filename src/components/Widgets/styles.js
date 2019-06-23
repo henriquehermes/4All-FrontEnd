@@ -33,8 +33,12 @@ export const Header = styled.div`
 
   flex: 0.4;
 
-  @media (min-width: 425px) and (max-width: 1023px) {
+  @media (min-width: 425px) and (max-width: 990px) {
     flex: 0.15;
+  }
+
+  @media (min-width: 991px) and (max-width: 1199px) {
+    flex: 0.2;
   }
 `;
 
@@ -76,7 +80,7 @@ export const Content = styled.div`
     align-items: center;
   }
 
-  @media (min-width: 425px) and (max-width: 1023px) {
+  @media (min-width: 425px) and (max-width: 1200px) {
     flex: 0.85;
   }
 `;
