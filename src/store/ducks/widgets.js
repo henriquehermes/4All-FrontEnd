@@ -36,20 +36,21 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case GET_WIDGETS:
-      return { ...state, loadingWidgets: true, errorWidgets: null };
+      return Object.assign({}, state, {
+        loadingWidgets: true,
+        errorWidgets: null
+      });
     case SUCCESS_WIDGETS:
-      return {
-        ...state,
+      return Object.assign({}, state, {
         payload: action.payload,
         loadingWidgets: false,
         errorWidgets: null
-      };
+      });
     case FAILURE_WIDGETS:
-      return {
-        ...state,
+      return Object.assign({}, state, {
         loadingWidgets: false,
         errorWidgets: action.errorWidgets
-      };
+      });
 
     default:
       return state;
