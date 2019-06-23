@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
-
+import { LineLoader } from '../Loaders';
 import {
   Body,
   Header,
@@ -15,8 +15,8 @@ import {
 
 export default class Widgets extends Component {
   render() {
-    const { data } = this.props;
-
+    const { data, loading } = this.props;
+    console.log(loading);
     return (
       <Row>
         <Col md='12' lg='6' xl='3'>
@@ -25,7 +25,7 @@ export default class Widgets extends Component {
               <IconOrder />
             </Header>
             <Content>
-              <Title>{data.newOrders}</Title>
+              {loading ? <LineLoader /> : <Title>{data.newOrders}</Title>}
               <SubTitle>New Orders</SubTitle>
             </Content>
           </Body>
@@ -36,7 +36,7 @@ export default class Widgets extends Component {
               <IconComment />
             </Header>
             <Content>
-              <Title>{data.comments}</Title>
+              {loading ? <LineLoader /> : <Title>{data.comments}</Title>}
               <SubTitle>Comments</SubTitle>
             </Content>
           </Body>
@@ -47,7 +47,7 @@ export default class Widgets extends Component {
               <IconUser />
             </Header>
             <Content>
-              <Title>{data.newUsers}</Title>
+              {loading ? <LineLoader /> : <Title>{data.newUsers}</Title>}
               <SubTitle>New Users</SubTitle>
             </Content>
           </Body>
@@ -58,7 +58,7 @@ export default class Widgets extends Component {
               <IconPage />
             </Header>
             <Content>
-              <Title>{data.pageViews}</Title>
+              {loading ? <LineLoader /> : <Title>{data.pageViews}</Title>}
               <SubTitle>Page Views</SubTitle>
             </Content>
           </Body>

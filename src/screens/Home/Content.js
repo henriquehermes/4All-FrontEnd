@@ -25,11 +25,12 @@ export default class Home extends Component {
     return (
       <Container>
         <Title>Dashboard</Title>
-        <Widgets data={widgets.payload} />
-        <Chart data={pageViews.payload} />
+        <Widgets data={widgets.payload} loading={widgets.loadingWidgets} />
+        <Chart data={pageViews.payload} loading={pageViews.loadingPageViews} />
         <Chat
           data={messages.payload}
           postMessage={event => postMessage(event)}
+          loading={messages.loadingMessages}
         />
       </Container>
     );

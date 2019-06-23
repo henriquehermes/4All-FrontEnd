@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
+import { ChatLoader } from '../Loaders';
 import {
   Container,
   Header,
@@ -46,7 +47,7 @@ export default class Chat extends Component {
   }
 
   render() {
-    const { data } = this.props;
+    const { data, loading } = this.props;
     const { inputValue } = this.state;
     const LastPosition = data.length - 1;
 
@@ -59,25 +60,29 @@ export default class Chat extends Component {
               <Title>Chat</Title>
             </Header>
             <Body>
-              {data.map((item, index) => (
-                <Cell
-                  key={Math.random()}
-                  noBorder={index === LastPosition ? true : false}
-                  displayPortraitLeft={item.displayPortraitLeft}
-                >
-                  <UserImage
-                    image={item.portrait}
+              {loading ? (
+                <ChatLoader />
+              ) : (
+                data.map((item, index) => (
+                  <Cell
+                    key={Math.random()}
+                    noBorder={index === LastPosition ? true : false}
                     displayPortraitLeft={item.displayPortraitLeft}
-                  />
-                  <MessageBox>
-                    <TextBox>
-                      <UserName>{item.userName}</UserName>
-                      <TimeUser>{item.time}</TimeUser>
-                    </TextBox>
-                    <TextMessage>{item.message}</TextMessage>
-                  </MessageBox>
-                </Cell>
-              ))}
+                  >
+                    <UserImage
+                      image={item.portrait}
+                      displayPortraitLeft={item.displayPortraitLeft}
+                    />
+                    <MessageBox>
+                      <TextBox>
+                        <UserName>{item.userName}</UserName>
+                        <TimeUser>{item.time}</TimeUser>
+                      </TextBox>
+                      <TextMessage>{item.message}</TextMessage>
+                    </MessageBox>
+                  </Cell>
+                ))
+              )}
             </Body>
             <Footer>
               <InputMessage
