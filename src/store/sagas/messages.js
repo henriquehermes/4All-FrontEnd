@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+
 import { takeLatest, put, call } from 'redux-saga/effects';
 import ApiCall from '../../config/api';
 
@@ -40,7 +42,7 @@ function* postMessage({ message }) {
 
     yield put({
       type: 'SUCCESS_MESSAGE',
-      message: message
+      message
     });
   } catch (err) {
     yield put({ type: 'FAILURE_MESSAGE', errorMessage: err });

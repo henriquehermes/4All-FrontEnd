@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { Container } from 'reactstrap';
 import { Title } from './styles';
 
@@ -36,6 +38,20 @@ export default class Home extends Component {
     );
   }
 }
+
+Home.defaultProps = {
+  postMessage
+};
+
+Home.propTypes = {
+  widgets: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  pageViews: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  messages: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  requestWidgets: PropTypes.func, // eslint-disable-line react/require-default-props
+  requestPageViews: PropTypes.func, // eslint-disable-line react/require-default-props
+  requestMessages: PropTypes.func, // eslint-disable-line react/require-default-props
+  postMessage: PropTypes.func
+};
 
 /**
  * Os request são executados assíncronamente

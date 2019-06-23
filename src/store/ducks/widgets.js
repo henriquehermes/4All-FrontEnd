@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const GET_WIDGETS = 'GET_WIDGETS';
 const SUCCESS_WIDGETS = 'SUCCESS_WIDGETS';
 const FAILURE_WIDGETS = 'FAILURE_WIDGETS';

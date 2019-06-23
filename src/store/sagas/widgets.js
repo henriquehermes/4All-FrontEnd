@@ -1,12 +1,13 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
 import ApiCall from '../../config/api';
-var numeral = require('numeral');
+
+const numeral = require('numeral');
 
 async function apiGet() {
   try {
     const response = await ApiCall.get('/widgets');
 
-    if (Boolean(response.data.pageViews))
+    if (response.data.pageViews)
       response.data.pageViews = numeral(response.data.pageViews).format('0.0a');
 
     /**

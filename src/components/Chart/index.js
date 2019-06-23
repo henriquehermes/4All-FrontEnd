@@ -1,4 +1,7 @@
+/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import {
   ResponsiveContainer,
   AreaChart,
@@ -32,12 +35,12 @@ export default class Chart extends Component {
                     <stop offset='5%' stopColor='#30a4ff' stopOpacity={0.4} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray={''} />
+                <CartesianGrid strokeDasharray='' />
                 <XAxis dataKey='month' />
                 <YAxis dataKey='views' />
                 <Tooltip />
                 <Area
-                  dot={true}
+                  dot
                   activeDot={{ r: 8 }}
                   type='monotone'
                   dataKey='views'
@@ -53,3 +56,9 @@ export default class Chart extends Component {
     );
   }
 }
+
+Chart.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  data: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired
+};

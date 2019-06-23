@@ -1,6 +1,7 @@
+/* eslint-disable object-shorthand */
 import { connect } from 'react-redux';
-import Dashboard from './Content';
 import { bindActionCreators } from 'redux';
+import Dashboard from './Content';
 
 import * as Widgets from '../../store/ducks/widgets';
 import * as PageViews from '../../store/ducks/pageViews';

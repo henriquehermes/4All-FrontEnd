@@ -1,4 +1,7 @@
+/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { Row, Col } from 'reactstrap';
 import { LineLoader } from '../Loaders';
 import {
@@ -21,7 +24,7 @@ export default class Widgets extends Component {
       <Row>
         <Col md='12' lg='6' xl='3'>
           <Body>
-            <Header background={'#30a5ff'}>
+            <Header background='#30a5ff'>
               <IconOrder />
             </Header>
             <Content>
@@ -32,7 +35,7 @@ export default class Widgets extends Component {
         </Col>
         <Col md='12' lg='6' xl='3'>
           <Body>
-            <Header background={'#ffb53e'}>
+            <Header background='#ffb53e'>
               <IconComment />
             </Header>
             <Content>
@@ -43,7 +46,7 @@ export default class Widgets extends Component {
         </Col>
         <Col md='12' lg='6' xl='3'>
           <Body>
-            <Header background={'#1ebfae'}>
+            <Header background='#1ebfae'>
               <IconUser />
             </Header>
             <Content>
@@ -54,7 +57,7 @@ export default class Widgets extends Component {
         </Col>
         <Col md='12' lg='6' xl='3'>
           <Body>
-            <Header background={'#f9243f'}>
+            <Header background='#f9243f'>
               <IconPage />
             </Header>
             <Content>
@@ -67,3 +70,9 @@ export default class Widgets extends Component {
     );
   }
 }
+
+Widgets.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  data: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired
+};

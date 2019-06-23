@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const GET_MESSAGES = 'GET_MESSAGES';
 const SUCCESS_MESSAGES = 'SUCCESS_MESSAGES';
 const FAILURE_MESSAGES = 'FAILURE_MESSAGES';
@@ -11,7 +12,7 @@ const FAILURE_MESSAGE = 'FAILURE_MESSAGE';
 export function postMessage(message) {
   return {
     type: POST_MESSAGE,
-    message: message
+    message
   };
 }
 

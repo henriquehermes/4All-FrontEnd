@@ -1,4 +1,7 @@
+/* eslint-disable react/jsx-no-bind */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { Row, Col } from 'reactstrap';
 import { ChatLoader } from '../Loaders';
 import {
@@ -33,12 +36,13 @@ export default class Chat extends Component {
 
     inputValue = event.target.value;
     this.setState({
-      inputValue: inputValue
+      inputValue
     });
   }
 
   handlePost() {
-    let { inputValue } = this.state;
+    const { inputValue } = this.state;
+    // eslint-disable-next-line react/prop-types
     const { postMessage } = this.props;
 
     postMessage(inputValue);
@@ -108,6 +112,12 @@ export default class Chat extends Component {
     );
   }
 }
+
+Chat.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  data: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired
+};
 
 /**
  * Botão Send so fica disponivel quando há algum texto no input

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const GET_PAGE_VIEWS = 'GET_PAGE_VIEWS';
 const SUCCESS_PAGE_VIEWS = 'SUCCESS_PAGE_VIEWS';
 const FAILURE_PAGE_VIEWS = 'FAILURE_PAGE_VIEWS';
