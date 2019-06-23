@@ -9,7 +9,7 @@ async function apiGet() {
 
     return response.data;
   } catch (e) {
-    return e;
+    throw e;
   }
 }
 
@@ -19,7 +19,7 @@ async function apiPost(payload) {
 
     return response.data;
   } catch (e) {
-    return e;
+    throw e;
   }
 }
 

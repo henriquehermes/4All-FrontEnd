@@ -17,7 +17,7 @@ async function apiGet() {
 
     return response.data;
   } catch (e) {
-    return e;
+    throw e;
   }
 }
 

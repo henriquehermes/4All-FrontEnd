@@ -76,6 +76,7 @@ export default function reducer(state = initialState, action) {
       });
     case FAILURE_MESSAGES:
       return Object.assign({}, state, {
+        payload: [],
         loadingMessages: false,
         errorMessages: action.errorMessages
       });
