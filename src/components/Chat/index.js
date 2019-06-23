@@ -76,7 +76,7 @@ export default class Chat extends Component {
                 data.map((item, index) => (
                   <Cell
                     key={Math.random()}
-                    noBorder={index === LastPosition ? true : false}
+                    noBorder={index === LastPosition}
                     displayPortraitLeft={item.displayPortraitLeft}
                   >
                     <UserImage

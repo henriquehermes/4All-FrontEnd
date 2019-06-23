@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { Container } from 'reactstrap';
-import { Title } from './styles';
+import Title from './styles';
 
 import Widgets from '../../components/Widgets';
 import Chart from '../../components/Chart';
