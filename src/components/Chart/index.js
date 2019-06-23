@@ -59,6 +59,6 @@ export default class Chart extends Component {
 
 Chart.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  data: PropTypes.object.isRequired,
+  data: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired
 };

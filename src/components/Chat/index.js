@@ -115,7 +115,7 @@ export default class Chat extends Component {
 
 Chat.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  data: PropTypes.object.isRequired,
+  data: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired
 };
 
