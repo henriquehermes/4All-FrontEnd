@@ -36,3 +36,14 @@ export default class Home extends Component {
     );
   }
 }
+
+/**
+ * Os request são executados assíncronamente
+ */
+
+/**
+ * Decidi passar via Props o metodo postMessage pois, evitaria redundancia no arquivo Chat
+ * sendo que já tenho este metodo disponivel neste arquivo.
+ *
+ * event: Recebe o texto escrito no input.
+ */

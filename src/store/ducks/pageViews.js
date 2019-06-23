@@ -1,10 +1,10 @@
-const REQUEST_PAGE_VIEWS = 'REQUEST_PAGE_VIEWS';
+const GET_PAGE_VIEWS = 'GET_PAGE_VIEWS';
 const SUCCESS_PAGE_VIEWS = 'SUCCESS_PAGE_VIEWS';
 const FAILURE_PAGE_VIEWS = 'FAILURE_PAGE_VIEWS';
 
 export function requestPageViews() {
   return {
-    type: REQUEST_PAGE_VIEWS
+    type: GET_PAGE_VIEWS
   };
 }
 
@@ -30,7 +30,7 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case REQUEST_PAGE_VIEWS:
+    case GET_PAGE_VIEWS:
       return Object.assign({}, state, {
         loadingPageViews: true,
         errorPageViews: null
@@ -51,3 +51,23 @@ export default function reducer(state = initialState, action) {
       return state;
   }
 }
+
+/**
+ * Utilizo sempre para as minhas request 3 tipos de Actions: REQUEST - SUCCESS - FAILURE,
+ * -- Sendo cada uma controlando o estado da aplicação.
+ * -- Loaders são mais facilmente implementados, evitando diversos setStates, deixando que o Redux controle a troca de variavel.
+ * -- Caso deseja retornar um Alert em caso de Erro na request, já temos a variavel que contem o erro a ser mostrado.
+ */
+
+/**
+ * PADRÕES:
+ *
+ * TYPE_NAME
+ *
+ * TYPE: GET - POST - PUT - DELETE - SUCCESS - FAILURE
+ * NAME: Nome do assunto.
+ *
+ * SUCCESS - Sucesso da ação com a Api
+ * FAILURE - Erro da ação com a Api
+ *
+ */

@@ -6,6 +6,7 @@ export const Container = styled.div`
   background: white;
   border-radius: 4px;
   margin: 20px 0px 20px 0px;
+  box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.1);
 `;
 
 export const Header = styled.div`
@@ -73,6 +74,8 @@ export const Cell = styled.div`
   border-bottom-color: #eeeeee;
   border-bottom-style: solid;
   border-bottom-width: ${props => (props.noBorder ? '0px' : '2px')};
+
+  /* Se noBorder for true, significa que a Cell é a ultima da lista de mesagens, ocultando a sua borda*/
 `;
 
 export const UserImage = styled.img.attrs(props => ({
@@ -82,6 +85,9 @@ export const UserImage = styled.img.attrs(props => ({
   height: 80px;
   border-radius: 50%;
   background: ${props => (props.image ? 'transparent' : '#ff7f00')};
+
+  /* Quando a mensagem é enviada pelo usuário, o fundo fica laranja em vez de uma imagem */
+
   margin: ${props =>
     props.displayPortraitLeft ? '0px 0px 15px 15px' : '0px 15px 15px 0px'};
 `;

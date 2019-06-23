@@ -1,7 +1,7 @@
-const REQUEST_MESSAGES = 'REQUEST_MESSAGES';
+const GET_MESSAGES = 'GET_MESSAGES';
 const SUCCESS_MESSAGES = 'SUCCESS_MESSAGES';
 const FAILURE_MESSAGES = 'FAILURE_MESSAGES';
-/** */
+
 const POST_MESSAGE = 'POST_MESSAGE';
 const SUCCESS_MESSAGE = 'SUCCESS_MESSAGE';
 const FAILURE_MESSAGE = 'FAILURE_MESSAGE';
@@ -33,7 +33,7 @@ export function failureMessage() {
 
 export function requestMessages() {
   return {
-    type: REQUEST_MESSAGES
+    type: GET_MESSAGES
   };
 }
 
@@ -62,7 +62,7 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case REQUEST_MESSAGES:
+    case GET_MESSAGES:
       return Object.assign({}, state, {
         loadingMessages: true,
         errorMessages: null
@@ -89,6 +89,11 @@ export default function reducer(state = initialState, action) {
             message: action.message
           }
         ],
+
+        /**
+         * Adiciono na lista de mensagens a mensagem digitada pelo usuario, ao efetuar o metodo POST a API.
+         */
+
         message: action.message,
         loadingMessage: true,
         errorMessage: null
@@ -109,3 +114,23 @@ export default function reducer(state = initialState, action) {
       return state;
   }
 }
+
+/**
+ * Utilizo sempre para as minhas request 3 tipos de Actions: REQUEST - SUCCESS - FAILURE,
+ * -- Sendo cada uma controlando o estado da aplicação.
+ * -- Loaders são mais facilmente implementados, evitando diversos setStates, deixando que o Redux controle a troca de variavel.
+ * -- Caso deseja retornar um Alert em caso de Erro na request, já temos a variavel que contem o erro a ser mostrado.
+ */
+
+/**
+ * PADRÕES:
+ *
+ * TYPE_NAME
+ *
+ * TYPE: GET - POST - PUT - DELETE - SUCCESS - FAILURE
+ * NAME: Nome do assunto.
+ *
+ * SUCCESS - Sucesso da ação com a Api
+ * FAILURE - Erro da ação com a Api
+ *
+ */

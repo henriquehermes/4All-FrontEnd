@@ -16,7 +16,7 @@ import {
 export default class Widgets extends Component {
   render() {
     const { data, loading } = this.props;
-    console.log(loading);
+
     return (
       <Row>
         <Col md='12' lg='6' xl='3'>

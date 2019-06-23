@@ -24,6 +24,7 @@ export const ChatLoader = () => {
     <>
       {[1, 2, 3].map(() => (
         <div
+          key={Math.random()}
           style={{
             display: 'flex',
             flexDirection: 'row',
@@ -40,3 +41,7 @@ export const ChatLoader = () => {
     </>
   );
 };
+
+/**
+ * Principais Loaders do Dashboard, reunidos em um unico arquivo.
+ */

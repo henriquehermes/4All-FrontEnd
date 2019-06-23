@@ -1,10 +1,10 @@
-const REQUEST_WIDGETS = 'REQUEST_WIDGETS';
+const GET_WIDGETS = 'GET_WIDGETS';
 const SUCCESS_WIDGETS = 'SUCCESS_WIDGETS';
 const FAILURE_WIDGETS = 'FAILURE_WIDGETS';
 
 export function requestWidgets() {
   return {
-    type: REQUEST_WIDGETS
+    type: GET_WIDGETS
   };
 }
 
@@ -35,7 +35,7 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case REQUEST_WIDGETS:
+    case GET_WIDGETS:
       return { ...state, loadingWidgets: true, errorWidgets: null };
     case SUCCESS_WIDGETS:
       return {
@@ -55,3 +55,23 @@ export default function reducer(state = initialState, action) {
       return state;
   }
 }
+
+/**
+ * Utilizo sempre para as minhas request 3 tipos de Actions: REQUEST - SUCCESS - FAILURE,
+ * -- Sendo cada uma controlando o estado da aplicação.
+ * -- Loaders são mais facilmente implementados, evitando diversos setStates, deixando que o Redux controle a troca de variavel.
+ * -- Caso deseja retornar um Alert em caso de Erro na request, já temos a variavel que contem o erro a ser mostrado.
+ */
+
+/**
+ * PADRÕES:
+ *
+ * TYPE_NAME
+ *
+ * TYPE: GET - POST - PUT - DELETE - SUCCESS - FAILURE
+ * NAME: Nome do assunto.
+ *
+ * SUCCESS - Sucesso da ação com a Api
+ * FAILURE - Erro da ação com a Api
+ *
+ */

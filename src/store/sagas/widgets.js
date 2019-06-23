@@ -9,6 +9,11 @@ async function apiGet() {
     if (Boolean(response.data.pageViews))
       response.data.pageViews = numeral(response.data.pageViews).format('0.0a');
 
+    /**
+     * Arredondamento da variavel pageViews com a biblioteca Numeral.
+     * http://numeraljs.com/
+     */
+
     return response.data;
   } catch (e) {
     return e;
@@ -29,5 +34,11 @@ function* getWidgets() {
 }
 
 export default function* watcherWidgets() {
-  yield takeLatest('REQUEST_WIDGETS', getWidgets);
+  yield takeLatest('GET_WIDGETS', getWidgets);
 }
+
+/**
+ * takeLatest só deixará ser executado a função quando ela receber um retorno, evitando filas de request trancados.
+ *
+ * As funções aqui são todas executadas assincronas
+ */

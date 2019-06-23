@@ -25,5 +25,11 @@ function* getPageViews() {
 }
 
 export default function* watcherPageViews() {
-  yield takeLatest('REQUEST_PAGE_VIEWS', getPageViews);
+  yield takeLatest('GET_PAGE_VIEWS', getPageViews);
 }
+
+/**
+ * takeLatest só deixará ser executado a função quando ela receber um retorno, evitando filas de request trancados.
+ *
+ * As funções aqui são todas executadas assincronas
+ */

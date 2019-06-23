@@ -5,3 +5,7 @@ const api = axios.create({
 });
 
 export default api;
+
+/**
+ * Unico arquivo com Host da aplicação
+ */

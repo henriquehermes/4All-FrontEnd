@@ -42,8 +42,14 @@ export default class Chat extends Component {
     const { postMessage } = this.props;
 
     postMessage(inputValue);
+    /**
+     * Dispara a Action com o texto do Input
+     */
 
     this.setState({ inputValue: '' });
+    /**
+     * Limpa campo do input
+     */
   }
 
   render() {
@@ -86,7 +92,6 @@ export default class Chat extends Component {
             </Body>
             <Footer>
               <InputMessage
-                ref={input => (this.textInput = input)}
                 onChange={this.handleText.bind(this)}
                 value={inputValue}
               />
@@ -103,3 +108,7 @@ export default class Chat extends Component {
     );
   }
 }
+
+/**
+ * Botão Send so fica disponivel quando há algum texto no input
+ */

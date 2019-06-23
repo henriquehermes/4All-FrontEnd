@@ -48,6 +48,12 @@ function* postMessage({ message }) {
 }
 
 export default function* watcherMessages() {
-  yield takeLatest('REQUEST_MESSAGES', getMessages),
+  yield takeLatest('GET_MESSAGES', getMessages),
     yield takeLatest('POST_MESSAGE', postMessage);
 }
+
+/**
+ * takeLatest só deixará ser executado a função quando ela receber um retorno, evitando filas de request trancados.
+ *
+ * As funções aqui são todas executadas assincronas
+ */

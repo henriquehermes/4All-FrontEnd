@@ -6,6 +6,7 @@ export const Container = styled.div`
   background: white;
   border-radius: 5px;
   overflow: hidden;
+  box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.1);
 
   @media (min-width: 1440px) {
     margin-top: 20px;

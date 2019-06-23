@@ -11,6 +11,7 @@ export const Body = styled.div`
   flex-direction: row;
   border-radius: 4px;
   overflow: hidden;
+  box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 1439px) {
     margin-bottom: 20px;
@@ -27,6 +28,9 @@ export const Header = styled.div`
   align-items: center;
   padding: 15px;
   background: ${props => props.background};
+
+  /* Recebo via Props a cor do background, evitando criar diversas Divs apenas para mudar a cor do Background */
+
   flex: 0.4;
 
   @media (min-width: 425px) and (max-width: 1023px) {
