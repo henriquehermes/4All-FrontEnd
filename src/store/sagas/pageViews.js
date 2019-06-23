@@ -1,5 +1,6 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
 import ApiCall from '../../config/api';
+import 'regenerator-runtime/runtime';
 
 async function apiGet() {
   try {
@@ -11,7 +12,7 @@ async function apiGet() {
   }
 }
 
-function* getPageViews() {
+export function* getPageViews() {
   try {
     const response = yield call(apiGet);
 

@@ -9,14 +9,14 @@ export function requestWidgets() {
   };
 }
 
-export function successWidgets() {
+export function successWidgets(payload) {
   return {
     type: SUCCESS_WIDGETS,
     payload
   };
 }
 
-export function failureWidgets() {
+export function failureWidgets(errorWidgets) {
   return {
     type: FAILURE_WIDGETS,
     errorWidgets

@@ -1,5 +1,6 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
 import ApiCall from '../../config/api';
+import 'regenerator-runtime/runtime';
 
 const numeral = require('numeral');
 
@@ -21,7 +22,7 @@ async function apiGet() {
   }
 }
 
-function* getWidgets() {
+export function* getWidgets() {
   try {
     const response = yield call(apiGet);
 

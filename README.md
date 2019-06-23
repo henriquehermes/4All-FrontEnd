@@ -16,6 +16,25 @@ Build Produção
   npm run build
 ```
 
+Jest
+
+```
+  npm run test
+```
+
+## Jest
+
+Testes localizados na pasta __tests__
+
+    .
+    ├── ...
+    ├── __test__     
+    │   ├── Actions     
+    │   ├── App         
+    │   └── Sagas                
+    └── ...
+
+
 ## Bibliotecas
 
 * axios

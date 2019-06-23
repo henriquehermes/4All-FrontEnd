@@ -2,6 +2,7 @@
 
 import { takeLatest, put, call } from 'redux-saga/effects';
 import ApiCall from '../../config/api';
+import 'regenerator-runtime/runtime';
 
 async function apiGet() {
   try {
@@ -23,7 +24,7 @@ async function apiPost(payload) {
   }
 }
 
-function* getMessages() {
+export function* getMessages() {
   try {
     const response = yield call(apiGet);
 
@@ -36,7 +37,7 @@ function* getMessages() {
   }
 }
 
-function* postMessage({ message }) {
+export function* postMessage({ message }) {
   try {
     yield call(apiPost, message);
 
@@ -50,8 +51,8 @@ function* postMessage({ message }) {
 }
 
 export default function* watcherMessages() {
-  yield takeLatest('GET_MESSAGES', getMessages),
-    yield takeLatest('POST_MESSAGE', postMessage);
+  yield takeLatest('GET_MESSAGES', getMessages);
+  yield takeLatest('POST_MESSAGE', postMessage);
 }
 
 /**
